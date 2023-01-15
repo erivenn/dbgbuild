@@ -51,9 +51,12 @@ mongoose.connect(url)
         }) 
         await pilot.save()
         //console.log('drone saved!')
-      } else if (foundpilot.distance > p.distance) {
+      } else {
+        if (foundpilot.distance > p.distance) {
           await foundpilot.updateOne({distance: p.distance})
+        }
           //console.log('distance updated')
+        await foundpilot.updateOne({distance: p.distance})
       }
     }))
   }
